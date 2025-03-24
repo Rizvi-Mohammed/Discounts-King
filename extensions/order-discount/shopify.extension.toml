@@ -1,0 +1,15 @@
+name = "order-discount"
+type = "order_discounts"
+api_version = "2023-07"
+
+[build]
+command = ""
+path = "dist/function.wasm"
+
+[ui.paths]
+create = "/app/order-discount/:functionId/new"
+details = "/app/order-discount/:functionId/:id"
+
+[input.variables]
+namespace = "$app:volume-discount"
+key = "function-configuration"

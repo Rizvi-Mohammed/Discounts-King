@@ -1,0 +1,33 @@
+query Input($userTag: [String!]!) {
+  cart {
+    buyerIdentity{
+      customer{
+        hasTags(tags: $userTag){
+          hasTag
+        }
+        metafield(namespace: "custom", key:"tag"){
+          value
+        }
+      }
+    }
+    cost{
+      subtotalAmount {
+        amount
+      }
+    }
+    lines {
+      quantity
+      merchandise {
+        __typename
+        ...on ProductVariant {
+          id
+        }
+      }
+    }
+  }
+  discountNode {
+    metafield(namespace: "$app:volume-discount", key: "function-configuration") {
+      value
+    }
+  }
+}
